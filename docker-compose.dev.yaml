@@ -1,0 +1,15 @@
+services:
+  app:
+    build:
+      target: dev
+    volumes:
+      - ./app:/app
+      - /app/node_modules
+
+  storybook:
+    build:
+      target: storybook
+    volumes:
+      - ./app:/app
+      - /app/node_modules
+    

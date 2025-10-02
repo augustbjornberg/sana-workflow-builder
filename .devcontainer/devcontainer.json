@@ -1,0 +1,10 @@
+{
+  "name": "Sana Workflow Builder",
+  "dockerComposeFile": [
+    "../docker-compose.yaml",
+    "../docker-compose.dev.yaml"
+  ],
+  "service": "app",
+  "workspaceFolder": "/app",
+  "remoteUser": "node"
+}
