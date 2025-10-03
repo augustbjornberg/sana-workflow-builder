@@ -1,6 +1,6 @@
 import type { NextConfig } from "next";
 
-const nextConfig: NextConfig = {
+const nextConfig = {
   turbopack: {
     rules: {
       "*.svg": {
@@ -9,6 +9,12 @@ const nextConfig: NextConfig = {
             loader: "@svgr/webpack",
             options: {
               icon: true,
+              svgo: true,
+              svgoConfig: {
+                plugins: [
+                  { name: 'removeAttrs', params: { attrs: '(fill|stroke|opacity)' } },
+                ],
+              },
             },
           },
         ],

@@ -1,6 +1,28 @@
 :root {
-	--color-background: #1e1e1e;
-	--color-foreground: #f0f0f0;
+	/* Colors */
+	--page-background: #1E1E1E;
+	--card-background: #F0F0F0;
+	--input-background: #F6F6F6;
+	--button-background: #E4E4E4;
+	--text-primary: #000000;
+	--text-secondary: #898989;
+	--icon: #7B7B7B;
+
+	/* Sizes */
+	--spacing: 0.25rem;
+
+	/* Fonts */
+	--font-sans: 'Sana Sans', -apple-system, Helvetica, Arial, sans-serif;
+}
+
+
+:root {
+    text-rendering: optimizelegibility;
+    -webkit-font-smoothing: antialiased;
+    text-size-adjust: 100%;
+    font-weight: 400;
+    line-height: 1.5;
+    font-synthesis: none;
 }
 
 /* @media (prefers-color-scheme: dark) {
@@ -9,18 +31,55 @@
 	}
 } */
 
+@font-face {
+	font-family:'Sana Sans';
+	src: url('/fonts/SanaSans-Regular.woff2') format('woff2');
+	font-weight: 400; 
+	font-style: normal;
+}
+
+@font-face {
+	font-family:'Sana Sans';
+	src: url('/fonts/SanaSans-Medium.woff2') format('woff2');
+	font-weight: 500; 
+	font-style: normal;
+}
+
+@font-face {
+	font-family:'Sana Sans';
+	src: url('/fonts/SanaSans-Book.woff2') format('woff2');
+	font-weight: 300; 
+	font-style: normal;
+}
+
 html,
 body {
 	max-width: 100vw;
 	overflow-x: hidden;
 }
 
+html {
+	tab-size: 4;
+}
+
 body {
-	color: var(--color-foreground);
-	background: var(--color-background);
-	font-family: Arial, Helvetica, sans-serif;
+	color: var(--text-primary);
+	/* background: var(--page-background); */
+	font-family: var(--font-sans);
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+}
+
+button {
+	appearance: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	background: none;
+	border: none;
+	padding: 0;
+	margin: 0;
+	font: inherit;
+	color: inherit;
 }
 
 * {
@@ -32,4 +91,9 @@ body {
 a {
 	color: inherit;
 	text-decoration: none;
+}
+
+button {
+	cursor: pointer;
+	border: 0;
 }
