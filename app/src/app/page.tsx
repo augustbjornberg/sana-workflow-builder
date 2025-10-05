@@ -1,16 +1,19 @@
 'use client'
 
-import styles from "./page.module.css"
-import { Modal } from "@/components/primitives"
+import {useState} from 'react'
+
+import styles from './page.module.css'
+
+import { WorkflowModal } from '@/features/workflow/WorkflowModal'
 
 export default function Home() {
+
+	const [open, setOpen] = useState(true)
+
 	return (
 		<div className={styles.page}>
 			<main className={styles.main}>
-				<Modal>
-					<h2 style={{ margin: 0, marginBottom: '16px' }}>Modal Title</h2>
-					<p>This is a modal content area.</p>
-				</Modal>
+				<WorkflowModal open={open} onClose={() => setOpen(false)} />
 			</main> 
 		</div>
 	)

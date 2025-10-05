@@ -15,8 +15,8 @@ const StyledButton = styled.button`
 	height: ${sizes.controlHeight};
 	padding: 0 ${spacing.md};
 	border-radius: ${radii.round};
-	font-weight: ${typography.button.fontWeight};
-	background: ${colors.buttonBackground};
+	font-weight: ${typography.weights.medium};
+	background: ${colors.bgButton};
 	color: #000000;
 	display: inline-flex;
 	align-items: center;
@@ -37,7 +37,6 @@ export const Button: React.FC<ButtonProps> = ({
 	disabled = false,
 	...props
 }) => {
-
 	return (
 		<StyledButton disabled={disabled} aria-disabled={disabled} {...props}>
 			{children}

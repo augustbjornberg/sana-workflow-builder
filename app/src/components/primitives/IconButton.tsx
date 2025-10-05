@@ -15,14 +15,11 @@ type IconButtonProps = {
 const StyledIconButton = styled.button`
 	width: ${sizes.controlHeight};
 	height: ${sizes.controlHeight};
+	background: ${colors.bgButton};
 	border-radius: ${radii.round};
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
-	cursor: pointer;
-	background: ${colors.buttonBackground};
-	color: inherit;
-	border: none;
 
 	&:disabled {
 		cursor: not-allowed;

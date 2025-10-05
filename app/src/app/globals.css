@@ -1,18 +1,37 @@
 :root {
-	/* Colors */
-	--page-background: #1E1E1E;
-	--card-background: #F0F0F0;
-	--input-background: #F6F6F6;
-	--button-background: #E4E4E4;
-	--text-primary: #000000;
-	--text-secondary: #898989;
-	--icon: #7B7B7B;
+	/* Colors - Backgrounds */
+	--color-bg-page: #1E1E1E;
+	--color-bg-card: #F0F0F0;
+	--color-bg-input: #F6F6F6;
+	--color-bg-button: #E4E4E4;
 
-	/* Sizes */
-	--spacing: 0.25rem;
+	/* Colors - Text */
+	--color-text-primary: #000000;
+	--color-text-secondary: #898989;
 
-	/* Fonts */
+	/* Colors - Icons */ 
+	--color-icon: #7B7B7B;
+
+	/* Spacing scale (4px base = 0.25rem) */
+	--spacing: 0.25rem; 
+
+	/* Sizes (use rem for scalable components) */
+	--size-control-height: 2.25rem; /* 36px */
+
+	/* Border radius (px is fine — doesn’t need to scale) */
+	--radius-sm: 4px;
+	--radius-md: 8px;
+	--radius-lg: 12px;
+	--radius-modal: 44px;
+	--radius-round: 9999px;
+
+	/* Typography */
 	--font-sans: 'Sana Sans', -apple-system, Helvetica, Arial, sans-serif;
+
+	--font-weight-book: 300;
+	--font-weight-regular: 400;
+	--font-weight-medium: 500;
+	--font-weight-button: 500;
 }
 
 
@@ -80,6 +99,11 @@ button {
 	margin: 0;
 	font: inherit;
 	color: inherit;
+	cursor: pointer;
+}
+
+button:disabled {
+	cursor: not-allowed;
 }
 
 * {
@@ -96,4 +120,10 @@ a {
 button {
 	cursor: pointer;
 	border: 0;
+}
+
+input {
+	font: inherit;
+	border: 0;
+	outline: none;
 }

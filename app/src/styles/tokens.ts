@@ -1,5 +1,5 @@
 export const sizes = {
-	controlHeight: '36px',
+	controlHeight: 'var(--size-control-height)',
 }
 
 export const spacing = {
@@ -10,33 +10,31 @@ export const spacing = {
 }
 
 export const radii = {
-	sm: '4px',
-	md: '8px',
-	lg: '12px',
-	modal: '44px',
-	round: '9999px',
+	sm: 'var(--radius-sm)',
+	md: 'var(--radius-md)',
+	lg: 'var(--radius-lg)',
+	modal: 'var(--radius-modal)',
+	round: 'var(--radius-round)',
 }
 
 export const typography = {
 	fontFamily: 'var(--font-sans)',
 	weights: {
-		book: 300,
-		regular: 400,
-		medium: 500,
-	},
-	button: {
-		fontWeight: 500
+		book: 'var(--font-weight-book)',
+		regular: 'var(--font-weight-regular)',
+		medium: 'var(--font-weight-medium)',
+		button: 'var(--font-weight-button)',
 	},
 }
 
 export const colors = {
-	pageBackground: 'var(--page-background)',
-	cardBackground: 'var(--card-background)',
-	inputBackground: 'var(--input-background)',
-	buttonBackground: 'var(--button-background)',
+	bgPage: 'var(--color-bg-page)',
+	bgCard: 'var(--color-bg-card)',
+	bgInput: 'var(--color-bg-input)',
+	bgButton: 'var(--color-bg-button)',
 
-	textPrimary: 'var(--text-primary)',
-	textSecondary: 'var(--text-secondary)',
+	textPrimary: 'var(--color-text-primary)',
+	textSecondary: 'var(--color-text-secondary)',
 
-	icon: 'var(--icon)'
+	icon: 'var(--color-icon)',
 }
