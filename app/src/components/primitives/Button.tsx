@@ -1,46 +1,88 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { sizes, radii, spacing, typography, colors } from '@/styles/tokens'
 
-import { Icon, IconName } from './Icon'
+import { Icon, IconProps } from './Icon'
+
+export type ButtonVariant = 'default' | 'meta'
 
 type ButtonProps = {
 	'aria-label': string
-	icon?: IconName
+	variant?: ButtonVariant
 	disabled?: boolean
-	// iconSize?: number | string
+	leftIconProps?: Partial<IconProps>
+	rightIconProps?: Partial<IconProps>
+	children: React.ReactNode
 } & React.ButtonHTMLAttributes<HTMLButtonElement>
-
-const StyledButton = styled.button`
-	height: ${sizes.controlHeight};
-	padding: 0 ${spacing.md};
-	border-radius: ${radii.round};
-	font-weight: ${typography.weights.medium};
-	background: ${colors.bgButton};
-	color: #000000;
-	display: inline-flex;
-	align-items: center;
-	justify-content: center;
-	gap: ${spacing.sm};
-	border: none;
-
-	&:disabled {
-		color: #aeaeae;
-		cursor: not-allowed;
-		background-color: #e4e4e4;
-	}
-`
 
 export const Button: React.FC<ButtonProps> = ({
 	children,
-	icon,
+	variant = 'default',
 	disabled = false,
+	leftIconProps,
+	rightIconProps,
 	...props
-}) => {
-	return (
-		<StyledButton disabled={disabled} aria-disabled={disabled} {...props}>
-			{children}
-			{icon && <Icon icon={icon} size={10} /> }
-		</StyledButton>
-	)
+}) => (
+	<StyledButton
+		$variant={variant}
+		disabled={disabled}
+		aria-disabled={disabled}
+		{...props}
+	>
+		{leftIconProps?.icon && <Icon {...leftIconProps as IconProps} />}
+		<span>{children}</span>
+		{rightIconProps?.icon && <Icon {...rightIconProps as IconProps} />}
+	</StyledButton>
+)
+
+export const baseButton = css`
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	border: none;
+	border-radius: ${radii.round};
+	cursor: pointer;
+	user-select: none;
+	text-decoration: none;
+	transition:
+		background-color var(--transition-base),
+		color var(--transition-base),
+		opacity var(--transition-base);
+
+	&:disabled {
+		color: ${colors.textDisabled};
+		cursor: not-allowed;
+		opacity: 0.8;
+	}
+`
+
+export const variantStyles = {
+	default: css`
+		background-color: ${colors.bgButton};
+		color: ${colors.textPrimary};
+
+		&:hover:not(:disabled) {
+			background-color: ${colors.bgButtonHover};
+		}
+	`,
+	meta: css`
+		background-color: transparent;
+		color: ${colors.textPrimary};
+
+		&:hover:not(:disabled) {
+			background-color: ${colors.bgInput};
+		}
+	`
 }
+
+const StyledButton = styled.button<{ $variant: ButtonVariant }>`
+	${baseButton};
+	font-weight: ${typography.weights.medium};
+	font-size: 0.9rem;
+	height: ${sizes.controlHeight};
+	padding: 0 ${spacing.md};
+	gap: ${spacing.sm};
+	border-radius: ${radii.round};
+
+	${({ $variant }) => variantStyles[$variant]};
+`

@@ -32,9 +32,13 @@ export const colors = {
 	bgCard: 'var(--color-bg-card)',
 	bgInput: 'var(--color-bg-input)',
 	bgButton: 'var(--color-bg-button)',
-
+	bgButtonHover: 'var(--color-bg-button-hover)',
+	
 	textPrimary: 'var(--color-text-primary)',
 	textSecondary: 'var(--color-text-secondary)',
+	textDisabled: '#aeaeae',
 
 	icon: 'var(--color-icon)',
+	
+	
 }

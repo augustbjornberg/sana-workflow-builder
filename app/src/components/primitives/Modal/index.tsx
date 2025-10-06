@@ -36,9 +36,7 @@ export const Modal = ModalBase as ModalComponent
 Modal.Header = ({ children, showClose = true }: HeaderProps) => (
 	<header className={styles.header}>
 		<div className={styles.headerContent}>
-			<Dialog.Title asChild>
-				{children}
-			</Dialog.Title>
+			<Dialog.Title asChild>{children}</Dialog.Title>
 		</div>
 		{showClose && (
 			<Dialog.Close asChild>

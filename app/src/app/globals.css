@@ -4,6 +4,7 @@
 	--color-bg-card: #F0F0F0;
 	--color-bg-input: #F6F6F6;
 	--color-bg-button: #E4E4E4;
+	--color-bg-button-hover: #dbdbdb;
 
 	/* Colors - Text */
 	--color-text-primary: #000000;
@@ -14,13 +15,15 @@
 
 	/* Spacing scale (4px base = 0.25rem) */
 	--spacing: 0.25rem;
-	--spacing-2: 0.5rem; /* 8px */
-	--spacing-4: 1rem;   /* 16px */ 
-	--spacing-6: 1.5rem; /* 24px */
+	--spacing-2: 0.5rem;  /* 8px */
+	--spacing-3: 0.75rem; /* 12px */ 
+	--spacing-4: 1rem;    /* 16px */ 
+	--spacing-6: 1.5rem;  /* 24px */
 
-	/* Sizes (use rem for scalable components) */
+	/* Sizes */
 	--size-control-height: 2.25rem; /* 36px */
-
+	--size-control-height-lg: 3.5rem; /* 56px */
+	
 	/* Border radius (px is fine — doesn’t need to scale) */
 	--radius-sm: 4px;
 	--radius-md: 8px;
@@ -35,6 +38,9 @@
 	--font-weight-regular: 400;
 	--font-weight-medium: 500;
 	--font-weight-button: 500;
+
+	/* Transitions */
+	--transition-base: 0.2s ease-in-out;
 }
 
 

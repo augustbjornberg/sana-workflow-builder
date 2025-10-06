@@ -1,9 +1,14 @@
 .overlay {
 	position: fixed;
 	inset: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
 	background-color: rgba(0, 0, 0, 0.6);
 	backdrop-filter: blur(2px);
-	z-index: 999;
+
+	z-index: 999; /* base layer for overlay */
 }
 
 .content {
@@ -13,14 +18,19 @@
 	transform: translate(-50%, -50%);
 	background: var(--color-bg-card);
 	border-radius: var(--radius-modal);
-    padding: calc(var(--spacing) * 6);
-	width: 600px;
+	padding: calc(var(--spacing) * 6);
+	box-sizing: border-box;
+
 	display: flex;
 	flex-direction: column;
-	overflow: hidden;
-	z-index: 1000;
-}
 
+	width: 100%;
+	max-width: 1024px;
+	max-height: min(880px, 100vh - 4rem);
+	overflow: auto;
+
+	z-index: 1000; /* must be higher than overlay */
+}
 .header {
 	display: flex;
 	justify-content: space-between;
