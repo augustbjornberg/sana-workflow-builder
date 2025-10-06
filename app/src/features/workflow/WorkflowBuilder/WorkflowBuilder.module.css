@@ -1,0 +1,4 @@
+.outlineMask {
+	outline: var(--spacing-2) solid var(--color-bg-card);
+	outline-offset: 0;
+}

@@ -13,7 +13,10 @@
 	--color-icon: #7B7B7B;
 
 	/* Spacing scale (4px base = 0.25rem) */
-	--spacing: 0.25rem; 
+	--spacing: 0.25rem;
+	--spacing-2: 0.5rem; /* 8px */
+	--spacing-4: 1rem;   /* 16px */ 
+	--spacing-6: 1.5rem; /* 24px */
 
 	/* Sizes (use rem for scalable components) */
 	--size-control-height: 2.25rem; /* 36px */
@@ -126,4 +129,10 @@ input {
 	font: inherit;
 	border: 0;
 	outline: none;
+}
+
+ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
 }

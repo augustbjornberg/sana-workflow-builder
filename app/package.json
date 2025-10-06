@@ -11,6 +11,7 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
+    "@dnd-kit/react": "^0.1.21",
     "next": "15.5.3",
     "radix-ui": "^1.4.3",
     "react": "19.1.0",
