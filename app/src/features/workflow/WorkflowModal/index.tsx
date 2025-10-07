@@ -45,9 +45,11 @@ export const WorkflowModal: React.FC<WorkflowModalProps> = ({ open, onClose }) =
 			<Modal.Header>
 				<Title>
 					<IconButton 
-						name={icons.bolt}
+						iconProps={{
+							icon: icons.bolt,
+							size: 14
+						}}
 						aria-label='Change your workflow icon'
-						iconSize={14}
 					/>
 					<TitleInput
 						value={name}

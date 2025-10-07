@@ -39,7 +39,15 @@ export const colors = {
 	
 	textPrimary: 'var(--color-text-primary)',
 	textSecondary: 'var(--color-text-secondary)',
-	textDisabled: '#aeaeae',
+	textDisabled: 'var(--color-text-disabled)',
 
 	icon: 'var(--color-icon)',
 }
+
+export const iconTones = {
+	primary: colors.textPrimary,
+	muted: colors.textSecondary,
+	disabled: colors.textDisabled
+} as const
+
+export type IconTone = keyof typeof iconTones

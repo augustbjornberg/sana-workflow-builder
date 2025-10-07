@@ -1,25 +1,22 @@
 import React from 'react'
 import styled from 'styled-components'
-import { sizes } from '@/styles/tokens'
-import { Icon, IconName } from './Icon'
+import { sizes, colors } from '@/styles/tokens'
+import { Icon, IconProps } from './Icon'
 import { baseButton, ButtonVariant, variantStyles } from './Button'
 
 export { icons } from './Icon'
 
 type IconButtonProps = {
-	name: IconName
+	iconProps: IconProps
 	'aria-label': string
-	disabled?: boolean
 	diameter?: string
-	iconSize?: number
 	variant?: ButtonVariant
 } & React.ButtonHTMLAttributes<HTMLButtonElement>
 
 export const IconButton: React.FC<IconButtonProps> = ({
-	name,
+	iconProps,
 	disabled = false,
 	diameter = sizes.controlHeight,
-	iconSize = 10,
 	variant = 'default',
 	...props
 }) => {
@@ -31,7 +28,10 @@ export const IconButton: React.FC<IconButtonProps> = ({
 			$variant={variant}
 			{...props}
 		>
-			<Icon icon={name} size={iconSize} />
+			<Icon
+				{...iconProps}
+				size={iconProps.size ?? 12}
+			/>
 		</StyledIconButton>
 	)
 }
@@ -45,6 +45,14 @@ const StyledIconButton = styled.button<{
 	height: ${({ $diameter }) => $diameter};
 	padding: 0;
 	border-radius: 50%;
+	color: ${colors.textPrimary};
+	--icon-color: ${colors.textPrimary};
 
 	${({ $variant }) => variantStyles[$variant]};
+
+	&:disabled {
+		color: ${colors.textDisabled};
+		--icon-color: ${colors.textDisabled};
+		cursor: not-allowed;
+	}
 `

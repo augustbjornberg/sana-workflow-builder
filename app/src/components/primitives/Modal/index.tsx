@@ -42,7 +42,7 @@ Modal.Header = ({ children, showClose = true }: HeaderProps) => (
 		</div>
 		{showClose && (
 			<Dialog.Close asChild>
-				<IconButton name={icons.close} aria-label='Close modal' />
+				<IconButton iconProps={{icon: icons.close}} aria-label='Close modal' />
 			</Dialog.Close>
 		)}
 	</header>

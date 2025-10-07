@@ -4,7 +4,7 @@ import { sizes, radii, spacing, typography, colors } from '@/styles/tokens'
 
 import { Icon, IconProps } from './Icon'
 
-export type ButtonVariant = 'default' | 'meta'
+export type ButtonVariant = 'default' | 'meta' | 'twoTone'
 
 type ButtonProps = {
 	'aria-label': string
@@ -29,9 +29,19 @@ export const Button: React.FC<ButtonProps> = ({
 		aria-disabled={disabled}
 		{...props}
 	>
-		{leftIconProps?.icon && <Icon {...leftIconProps as IconProps} />}
+		{leftIconProps?.icon && (
+			<Icon
+				{...leftIconProps as IconProps}
+				size={leftIconProps.size ?? 14}
+			/>
+		)}
 		<span>{children}</span>
-		{rightIconProps?.icon && <Icon {...rightIconProps as IconProps} />}
+		{rightIconProps?.icon && (
+			<Icon
+				{...rightIconProps as IconProps}
+				size={rightIconProps.size ?? 14}
+			/>
+		)}
 	</StyledButton>
 )
 
@@ -51,15 +61,14 @@ export const baseButton = css`
 
 	&:disabled {
 		color: ${colors.textDisabled};
+		--icon-color: ${colors.textDisabled};
 		cursor: not-allowed;
-		opacity: 0.8;
 	}
 `
 
 export const variantStyles = {
 	default: css`
 		background-color: ${colors.bgButton};
-		color: ${colors.textPrimary};
 
 		&:hover:not(:disabled) {
 			background-color: ${colors.bgButtonHover};
@@ -68,10 +77,20 @@ export const variantStyles = {
 	meta: css`
 		background-color: transparent;
 		color: ${colors.textPrimary};
+		--icon-color: ${colors.textSecondary};
 
 		&:hover:not(:disabled) {
 			background-color: ${colors.bgInput};
 		}
+	`,
+	twoTone: css`
+		--icon-color: ${colors.textSecondary};
+
+		&:hover:not(:disabled) {
+			background-color: ${colors.bgButtonHover};
+		}
+
+		background-color: ${colors.bgButton};
 	`
 }
 

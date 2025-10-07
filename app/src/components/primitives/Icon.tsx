@@ -26,31 +26,32 @@ export const icons = {
 	return: ReturnIcon,
 } as const
 
-export type IconName = keyof typeof icons 
+export type IconName = keyof typeof icons
 type SvgComponent = React.ComponentType<React.SVGProps<SVGSVGElement>>
 
 export interface IconProps extends Omit<React.SVGProps<SVGSVGElement>, 'name'> {
-	icon: IconName | SvgComponent // Either a key from the icon map or a direct SVG component
+	icon: IconName | SvgComponent
 	size?: number | string
-	color?: string
 }
 
-// Icon component for bundled SVGs.
-// Accepts either an icon key or a direct SVG component.
 export const Icon: React.FC<IconProps> = ({
 	icon,
 	size = 16,
-	color = 'currentColor',
 	...props
 }) => {
-	const Svg = typeof icon === 'string' ? icons[icon] : (icon as SvgComponent)
+	const Svg = typeof icon === 'string' ? icons[icon] : icon as SvgComponent
 
 	if (!Svg) {
-		console.warn(
-			`[Icon] Unknown icon: "${icon}". Available: ${Object.keys(icons).join(', ')}`
-		)
+		console.warn(`[Icon] Unknown icon: "${icon}"`)
 		return null
 	}
 
-	return <Svg width={size} height={size} fill={color} {...props} />
+	return (
+		<Svg
+			width={size}
+			height={size}
+			fill="var(--icon-color, currentColor)"
+			{...props}
+		/>
+	)
 }

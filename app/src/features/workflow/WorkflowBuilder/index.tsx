@@ -25,9 +25,10 @@ export const WorkflowBuilder: React.FC<WorkflowBuilderProps> = ({
 	return (
 		<Column>
 			<Button 
-				aria-label='Add a new step'
-				leftIconProps={{icon: icons.click, size: 13}}
-				rightIconProps={{icon: icons.arrowDown, size: 7}}
+				aria-label='Change workflow mode'
+				variant='twoTone'
+				leftIconProps={{icon: icons.click, size: 13 }}
+				rightIconProps={{icon: icons.arrowDown, size: 7 }}
 				className={styles.outlineMask}
 			>
 				Run manually
@@ -39,8 +40,8 @@ export const WorkflowBuilder: React.FC<WorkflowBuilderProps> = ({
 				onReorder={onReorder}
 			/>
 			<IconButton
-				name={icons.plus}
-				aria-label='Add a new step'
+				iconProps={{ icon: icons.plus}}
+				aria-label='Add a new step to workflow'
 				onClick={onAdd}
 				className={styles.outlineMask}
 				/>

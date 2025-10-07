@@ -52,7 +52,7 @@ export const WorkflowStepItem: React.FC<Props> = ({
 		>
 			<LeftSlot>
 				<SideButton aria-label={`Delete step ${step.id}`} onClick={onDelete}>
-					<Icon icon={icons.delete} size={12}/>
+					<Icon icon={icons.delete} size={12} />
 				</SideButton>
 			</LeftSlot>
 
@@ -74,10 +74,12 @@ export const WorkflowStepItem: React.FC<Props> = ({
 
 					<IconButton
 						disabled={!step.prompt.length}
-						name={icons.return}
-						aria-label=''
+						iconProps={{
+							icon: icons.return,
+							size: 15
+						}}
+						aria-label='Send message'
 						diameter='40px'
-						iconSize={15}
 					/>
 				</InputWrapper>
 			</OutlineWrapper>
@@ -171,6 +173,7 @@ const SideButton = styled.button`
 	align-items: center;
 	justify-content: center;
 	padding: var(--spacing-2);
+	color: ${colors.textSecondary};
 `
 
 const IndexLabel = styled.span`
