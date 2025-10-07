@@ -12,12 +12,10 @@ type ModalProps = {
 type SlotProps = { children: React.ReactNode }
 type HeaderProps = SlotProps & { showClose?: boolean }
 
-// Composite type
+// Composite type 
 type ModalComponent = React.FC<ModalProps> & {
 	Header: React.FC<HeaderProps>
-	Content: React.ForwardRefExoticComponent<
-		SlotProps & React.RefAttributes<HTMLDivElement>
-	>
+	Content: React.FC<SlotProps>
 	Footer: React.FC<SlotProps>
 }
 
@@ -38,7 +36,9 @@ export const Modal = ModalBase as ModalComponent
 Modal.Header = ({ children, showClose = true }: HeaderProps) => (
 	<header className={styles.header}>
 		<div className={styles.headerContent}>
-			<Dialog.Title asChild>{children}</Dialog.Title>
+			<Dialog.Title asChild>
+				{children}
+			</Dialog.Title>
 		</div>
 		{showClose && (
 			<Dialog.Close asChild>
@@ -48,11 +48,14 @@ Modal.Header = ({ children, showClose = true }: HeaderProps) => (
 	</header>
 )
 
-Modal.Content = React.forwardRef<HTMLDivElement, SlotProps>(({ children }, ref) => (
-	<main ref={ref} className={styles.body}>{children}</main>
-))
-Modal.Content.displayName = 'Modal.Content'
+Modal.Content = ({ children }: SlotProps) => (
+	<main className={styles.body}>{children}</main>
+)
 
 Modal.Footer = ({ children }: SlotProps) => (
 	<footer className={styles.footer}>{children}</footer>
 )
+
+Modal.Header.displayName = 'Modal.Header'
+Modal.Content.displayName = 'Modal.Content'
+Modal.Footer.displayName = 'Modal.Footer'
