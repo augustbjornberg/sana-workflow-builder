@@ -25,6 +25,9 @@ export const typography = {
 		medium: 'var(--font-weight-medium)',
 		button: 'var(--font-weight-button)',
 	},
+	sizes: {
+		strong: 'var(--font-size-strong)',
+	}
 }
 
 export const colors = {
@@ -39,6 +42,4 @@ export const colors = {
 	textDisabled: '#aeaeae',
 
 	icon: 'var(--color-icon)',
-	
-	
 }

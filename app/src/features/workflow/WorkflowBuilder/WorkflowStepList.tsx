@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React from 'react'
 import { DragDropProvider, DragDropEvents } from '@dnd-kit/react'
 import { RestrictToVerticalAxis } from '@dnd-kit/abstract/modifiers'
 import styled from 'styled-components'

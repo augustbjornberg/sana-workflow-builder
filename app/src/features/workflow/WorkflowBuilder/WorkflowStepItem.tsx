@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import styled from 'styled-components'
 import { useSortable } from '@dnd-kit/react/sortable'
 
@@ -22,17 +22,37 @@ export const WorkflowStepItem: React.FC<Props> = ({
 	onDelete
 }) => {
 	const handleRef = useRef<HTMLButtonElement | null>(null)
+	const inputRef = useRef<HTMLInputElement | null>(null)
+
 	const { ref, isDragging } = useSortable({
 		id: step.id,
 		index,
 		handle: handleRef
 	})
 
+	const [isActive, setIsActive] = useState(false)
+
+	const handleMouseEnter = () => setIsActive(true)
+	const handleMouseLeave = () => {
+		// only deactivate if input isn't focused
+		if (document.activeElement !== inputRef.current) {
+			setIsActive(false)
+		}
+	}
+
+	const handleFocus = () => setIsActive(true)
+	const handleBlur = () => setIsActive(false)
+
 	return (
-		<Item ref={ref} data-dragging={isDragging || undefined}>
+		<Item
+			ref={ref}
+			$active={isActive || isDragging}
+			onMouseEnter={handleMouseEnter}
+			onMouseLeave={handleMouseLeave}
+		>
 			<LeftSlot>
 				<SideButton aria-label={`Delete step ${step.id}`} onClick={onDelete}>
-					<Icon icon={icons.delete} size={12} />
+					<Icon icon={icons.delete} size={12}/>
 				</SideButton>
 			</LeftSlot>
 
@@ -41,19 +61,28 @@ export const WorkflowStepItem: React.FC<Props> = ({
 					<IndexLabel>{index + 1}</IndexLabel>
 
 					<Input
+						ref={inputRef}
 						placeholder='What would you like to do?'
 						type='text'
 						name={`Step ${step.id}`}
 						value={step.prompt}
+						onFocus={handleFocus}
+						onBlur={handleBlur}
 						onChange={e => onChange({ ...step, prompt: e.target.value })}
 						aria-label={`Prompt for step ${step.id}`}
 					/>
 
-					<IconButton name={icons.return} aria-label='' diameter='40px' iconSize={15} />
+					<IconButton
+						disabled={!step.prompt.length}
+						name={icons.return}
+						aria-label=''
+						diameter='40px'
+						iconSize={15}
+					/>
 				</InputWrapper>
 			</OutlineWrapper>
 
-			<Actions>
+			<Actions $active={isActive || isDragging}>
 				<Button aria-label='Select mode' variant='meta' leftIconProps={{ icon: icons.create, size: 12 }}>Create</Button>
 				<Button aria-label='Select from apps' variant='meta' leftIconProps={{ icon: icons.plus, size: 10 }}>Sources</Button>
 				<Button aria-label='Select input' variant='meta' leftIconProps={{ icon: icons.brackets, size: 12 }}>Input</Button>
@@ -68,6 +97,7 @@ export const WorkflowStepItem: React.FC<Props> = ({
 	)
 }
 
+
 const InputWrapper = styled.div`
 	flex: 1;
 	display: flex;
@@ -80,16 +110,22 @@ const InputWrapper = styled.div`
 	gap: var(--spacing-3);
 	position: relative;
 	z-index: 1;
+	box-shadow: var(--item-shadow);
+	transition: box-shadow 0.3s ease;
 `
 
-const Item = styled.li`
-	--controls-opacity: 0;
-	--item-shadow: none;
+const Item = styled.li<{ $active: boolean }>`
+	--controls-opacity: ${({ $active }) => ($active ? 1 : 0)};
+	--item-shadow: ${({ $active }) =>
+		$active
+			? `inset 0 0 4px #ffffff, 0 var(--spacing-2) var(--spacing-3) rgba(0,0,0,0.05)`
+			: 'none'};
+
 	--side-w: calc(var(--spacing) * 12);
 
 	display: grid;
 	grid-template-columns: var(--side-w) 1fr var(--side-w);
-	grid-template-rows: auto auto;      /* row1=input, row2=actions */
+	grid-template-rows: auto auto;
 	align-items: center;
 	row-gap: var(--spacing-2);
 
@@ -97,25 +133,11 @@ const Item = styled.li`
 		opacity: var(--controls-opacity);
 		transition: opacity 0.3s ease;
 	}
-
-	${InputWrapper} {
-		box-shadow: var(--item-shadow);
-		transition: box-shadow 0.3s ease;
-	}
-
-	&:hover,
-	&:has(:focus-visible),
-	&[data-dragging='true'] {
-		--controls-opacity: 1;
-		--item-shadow:
-			inset 0 0 4px #ffffff,
-			0 var(--spacing-2) var(--spacing-3) rgba(0,0,0,0.05);
-	}
 `
 
 const LeftSlot = styled.div`
 	grid-column: 1;
-	grid-row: 1;               /* lock to input row */
+	grid-row: 1;
 	justify-self: center;
 	align-self: center;
 	display: flex;
@@ -131,26 +153,17 @@ const OutlineWrapper = styled.div`
 	border-radius: ${radii.round};
 `
 
-const Actions = styled.div`
+const Actions = styled.div<{ $active: boolean }>`
 	grid-column: 2;
 	grid-row: 2;
-
 	display: flex;
-	// gap: var(--spacing);
-
 	overflow: hidden;
-	max-height: 0;
-	opacity: 0;
-	pointer-events: none;
+	pointer-events: ${({ $active }) => ($active ? 'auto' : 'none')};
+	max-height: ${({ $active }) => ($active ? 'var(--size-control-height)' : '0')};
+	opacity: ${({ $active }) => ($active ? 1 : 0)};
 	transition:
 		max-height 500ms ease,
 		opacity 500ms ease 250ms;
-
-	${Item}:hover & {
-		max-height: var(--size-control-height);
-		opacity: 1;
-		pointer-events: auto;
-	}
 `
 
 const SideButton = styled.button`

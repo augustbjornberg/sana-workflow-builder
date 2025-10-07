@@ -39,6 +39,8 @@
 	--font-weight-medium: 500;
 	--font-weight-button: 500;
 
+	--font-size-strong: 1.125rem;
+
 	/* Transitions */
 	--transition-base: 0.2s ease-in-out;
 }
@@ -142,3 +144,4 @@ ul {
 	padding: 0;
 	margin: 0;
 }
+

@@ -16,7 +16,7 @@ type WorkflowModalProps = {
 
 export const WorkflowModal: React.FC<WorkflowModalProps> = ({ open, onClose }) => {
 
-	const [name, setName] = React.useState('New workflow')
+	const [name, setName] = React.useState('')
 
 	const {
 		steps,
@@ -46,13 +46,14 @@ export const WorkflowModal: React.FC<WorkflowModalProps> = ({ open, onClose }) =
 				<Title>
 					<IconButton 
 						name={icons.bolt}
-						aria-label=""
+						aria-label='Change your workflow icon'
 						iconSize={14}
 					/>
 					<TitleInput
 						value={name}
+						placeholder='New workflow'
 						onChange={event => setName(event.target.value)}
-						aria-label="Workflow name"
+						aria-label='Change your workflow name'
 					/>
 				</Title>
 			</Modal.Header>
@@ -90,6 +91,7 @@ export const Title = styled.div`
 `
 
 export const TitleInput = styled.input`
+	font-size: ${typography.sizes.strong};
 	font-weight: ${typography.weights.medium};
 	background: transparent;
 `
