@@ -1,12 +1,12 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { useSortable } from '@dnd-kit/react/sortable'
 
 import { Button, Icon, IconButton, icons } from '@/components/primitives'
-import { Step } from './types'
-import { colors, radii, typography } from '@/styles/tokens'
+import { Step } from '../types'
+import { tokens } from '@/styles/tokens'
 
-import styles from './WorkflowBuilder.module.css'
+import { OutlineMask } from './OutlineMask'
 
 type Props = {
 	step: Step
@@ -43,6 +43,12 @@ export const WorkflowStepItem: React.FC<Props> = ({
 	const handleFocus = () => setIsActive(true)
 	const handleBlur = () => setIsActive(false)
 
+	useEffect(() => {
+		if (index === 0) {
+			inputRef.current?.focus()
+		}
+	}, [index])
+
 	return (
 		<Item
 			ref={ref}
@@ -56,7 +62,7 @@ export const WorkflowStepItem: React.FC<Props> = ({
 				</SideButton>
 			</LeftSlot>
 
-			<OutlineWrapper className={styles.outlineMask}>
+			<OutlineWrapper>
 				<InputWrapper>
 					<IndexLabel>{index + 1}</IndexLabel>
 
@@ -105,8 +111,8 @@ const InputWrapper = styled.div`
 	display: flex;
 	align-items: center;
 	height: var(--size-control-height-lg);
-	background-color: ${colors.bgInput};
-	border-radius: ${radii.round};
+	background-color: ${tokens.color.bg.input};
+	border-radius: ${tokens.radius.round};
 	padding: var(--spacing-2);
 	padding-left: var(--spacing-4);
 	gap: var(--spacing-3);
@@ -149,10 +155,10 @@ const RightSlot = styled(LeftSlot)`
 	grid-column: 3;
 `
 
-const OutlineWrapper = styled.div`
+const OutlineWrapper = styled(OutlineMask)`
 	grid-column: 2;
 	grid-row: 1;
-	border-radius: ${radii.round};
+	border-radius: ${tokens.radius.round};
 `
 
 const Actions = styled.div<{ $active: boolean }>`
@@ -173,11 +179,11 @@ const SideButton = styled.button`
 	align-items: center;
 	justify-content: center;
 	padding: var(--spacing-2);
-	color: ${colors.textSecondary};
+	color: ${tokens.color.text.secondary};
 `
 
 const IndexLabel = styled.span`
-	font-weight: ${typography.weights.medium};
+	font-weight: ${tokens.typography.weight.medium};
 	min-width: var(--spacing-6);
 	text-align: center;
 `

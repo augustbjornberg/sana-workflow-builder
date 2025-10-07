@@ -4,7 +4,7 @@ import { RestrictToVerticalAxis } from '@dnd-kit/abstract/modifiers'
 import styled from 'styled-components'
 
 import { WorkflowStepItem } from './WorkflowStepItem'
-import { Step } from './types'
+import { Step } from '../types'
 
 type Props = {
 	items: Step[]

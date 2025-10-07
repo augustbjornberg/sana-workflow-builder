@@ -4,9 +4,9 @@ import styled from 'styled-components'
 import { Modal, Button, icons, IconButton } from '@/components/primitives/'
 
 import { WorkflowBuilder } from '../WorkflowBuilder'
-import { useWorkflowSteps } from '../WorkflowBuilder/useWorkflowSteps'
+import { useWorkflowSteps } from '../WorkflowBuilder/hooks/useWorkflowSteps'
 
-import { typography } from '@/styles/tokens'
+import { tokens } from '@/styles/tokens'
 import { ScrollArea } from '@/components/primitives/ScrollArea'
 
 type WorkflowModalProps = {
@@ -93,7 +93,7 @@ export const Title = styled.div`
 `
 
 export const TitleInput = styled.input`
-	font-size: ${typography.sizes.strong};
-	font-weight: ${typography.weights.medium};
+	font-size: ${tokens.typography.size.strong};
+	font-weight: ${tokens.typography.weight.medium};
 	background: transparent;
 `

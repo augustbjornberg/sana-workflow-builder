@@ -1,6 +1,6 @@
 import { nanoid } from 'nanoid'
 import { usePersistentState } from '@/hooks/usePersistentState'
-import { Step } from './types'
+import { Step } from '../types'
 
 // Create a new step with a given id and an empty prompt
 export const createStep = (id: string): Step => ({

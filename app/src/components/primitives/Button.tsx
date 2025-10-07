@@ -1,6 +1,7 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
-import { sizes, radii, spacing, typography, colors } from '@/styles/tokens'
+// import { sizes, radii, spacing, typography, colors } from '@/styles/tokens'
+import { tokens } from '@/styles/tokens'
 
 import { Icon, IconProps } from './Icon'
 
@@ -50,7 +51,7 @@ export const baseButton = css`
 	align-items: center;
 	justify-content: center;
 	border: none;
-	border-radius: ${radii.round};
+	border-radius: ${tokens.radius.round};
 	cursor: pointer;
 	user-select: none;
 	text-decoration: none;
@@ -60,48 +61,48 @@ export const baseButton = css`
 		opacity var(--transition-base);
 
 	&:disabled {
-		color: ${colors.textDisabled};
-		--icon-color: ${colors.textDisabled};
+		color: ${tokens.color.text.disabled};
+		--icon-color: ${tokens.color.text.disabled};
 		cursor: not-allowed;
 	}
 `
 
 export const variantStyles = {
 	default: css`
-		background-color: ${colors.bgButton};
+		background-color: ${tokens.color.bg.control.default};
 
 		&:hover:not(:disabled) {
-			background-color: ${colors.bgButtonHover};
+			background-color: ${tokens.color.bg.control.hover};
 		}
 	`,
 	meta: css`
 		background-color: transparent;
-		color: ${colors.textPrimary};
-		--icon-color: ${colors.textSecondary};
+		color: ${tokens.color.text.primary};
+		--icon-color: ${tokens.color.text.secondary};
 
 		&:hover:not(:disabled) {
-			background-color: ${colors.bgInput};
+			background-color: ${tokens.color.bg.input};
 		}
 	`,
 	twoTone: css`
-		--icon-color: ${colors.textSecondary};
+		--icon-color: ${tokens.color.text.secondary};
 
 		&:hover:not(:disabled) {
-			background-color: ${colors.bgButtonHover};
+			background-color: ${tokens.color.bg.control.hover};
 		}
 
-		background-color: ${colors.bgButton};
+		background-color: ${tokens.color.bg.control.default};
 	`
 }
 
 const StyledButton = styled.button<{ $variant: ButtonVariant }>`
 	${baseButton};
-	font-weight: ${typography.weights.medium};
+	font-weight: ${tokens.typography.weight.medium};
 	font-size: 0.9rem;
-	height: ${sizes.controlHeight};
-	padding: 0 ${spacing.md};
-	gap: ${spacing.sm};
-	border-radius: ${radii.round};
+	height: ${tokens.size.control.default};
+	padding: 0 ${tokens.spacing.md};
+	gap: ${tokens.spacing.sm};
+	border-radius: ${tokens.radius.round};
 
 	${({ $variant }) => variantStyles[$variant]};
 `

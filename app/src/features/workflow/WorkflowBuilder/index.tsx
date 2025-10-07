@@ -2,10 +2,10 @@ import React from 'react'
 import styled from 'styled-components'
 
 import { Button, IconButton, icons } from '@/components/primitives'
-import { WorkflowStepList } from './WorkflowStepList'
 import { Step } from './types'
 
-import styles from './WorkflowBuilder.module.css'
+import { WorkflowStepList } from './components/WorkflowStepList'
+import { OutlineMask } from './components/OutlineMask'
 
 type WorkflowBuilderProps = {
 	steps: Step[]
@@ -24,27 +24,31 @@ export const WorkflowBuilder: React.FC<WorkflowBuilderProps> = ({
 }) => {
 	return (
 		<Column>
-			<Button 
-				aria-label='Change workflow mode'
-				variant='twoTone'
-				leftIconProps={{icon: icons.click, size: 13 }}
-				rightIconProps={{icon: icons.arrowDown, size: 7 }}
-				className={styles.outlineMask}
-			>
-				Run manually
-			</Button>
+			<OutlineMask>
+				<Button 
+					aria-label='Change workflow mode'
+					variant='twoTone'
+					leftIconProps={{icon: icons.click, size: 13 }}
+					rightIconProps={{icon: icons.arrowDown, size: 7 }}
+					// className={styles.outlineMask}
+				>
+					Run manually
+				</Button>
+			</OutlineMask>
 			<WorkflowStepList
 				items={steps}
 				onChange={onChange}
 				onDelete={onDelete}
 				onReorder={onReorder}
 			/>
-			<IconButton
-				iconProps={{ icon: icons.plus}}
-				aria-label='Add a new step to workflow'
-				onClick={onAdd}
-				className={styles.outlineMask}
-				/>
+			<OutlineMask>
+				<IconButton
+					iconProps={{ icon: icons.plus}}
+					aria-label='Add a new step to workflow'
+					onClick={onAdd}
+					// className={styles.outlineMask}
+					/>
+			</OutlineMask>
 		</Column>
 	)
 }

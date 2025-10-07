@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { sizes, colors } from '@/styles/tokens'
+import { tokens } from '@/styles/tokens'
 import { Icon, IconProps } from './Icon'
 import { baseButton, ButtonVariant, variantStyles } from './Button'
 
@@ -16,7 +16,7 @@ type IconButtonProps = {
 export const IconButton: React.FC<IconButtonProps> = ({
 	iconProps,
 	disabled = false,
-	diameter = sizes.controlHeight,
+	diameter = tokens.size.control.default,
 	variant = 'default',
 	...props
 }) => {
@@ -45,14 +45,14 @@ const StyledIconButton = styled.button<{
 	height: ${({ $diameter }) => $diameter};
 	padding: 0;
 	border-radius: 50%;
-	color: ${colors.textPrimary};
-	--icon-color: ${colors.textPrimary};
+	color: ${tokens.color.text.primary};
+	--icon-color: ${tokens.color.text.primary};
 
 	${({ $variant }) => variantStyles[$variant]};
 
 	&:disabled {
-		color: ${colors.textDisabled};
-		--icon-color: ${colors.textDisabled};
+		color: ${tokens.color.text.disabled};
+		--icon-color: ${tokens.color.text.disabled};
 		cursor: not-allowed;
 	}
 `
