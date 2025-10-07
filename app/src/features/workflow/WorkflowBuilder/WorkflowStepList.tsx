@@ -19,7 +19,6 @@ export const WorkflowStepList: React.FC<Props> = ({
 	onDelete,
 	onReorder
 }) => {
-
 	// Reorder steps while dragging, triggered when a dragged item moves over another
 	// Skips when there's no valid source/target or when dragging over itself
 	const handleDragOver: DragDropEvents['dragover'] = event => {
@@ -28,16 +27,11 @@ export const WorkflowStepList: React.FC<Props> = ({
 		onReorder(String(source.id), String(target.id))
 	}
 
-	// const handleDragEnd: DragDropEvents['dragend'] = event => {
-	// 	if (event.canceled) return
-	// }
-
 	return (
 		<DragDropProvider 
 			// dnd-kit RestrictToVerticalAxis has mismatched types with DragDropProvider modifiers
 			modifiers={[RestrictToVerticalAxis as any]} // eslint-disable-line @typescript-eslint/no-explicit-any
 			onDragOver={handleDragOver} 
-			// onDragEnd={handleDragEnd}
 		>
 			<StyledList>
 				{items.map((step, i) => (

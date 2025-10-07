@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import { Button, Icon, IconButton, icons } from '@/components/primitives'
+import { Button, IconButton, icons } from '@/components/primitives'
 import { WorkflowStepList } from './WorkflowStepList'
 import { Step } from './types'
 
@@ -51,12 +51,14 @@ export const WorkflowBuilder: React.FC<WorkflowBuilderProps> = ({
 const Column = styled.div`
 	position: relative;
 	display: flex;
+	max-width: 740px;
+	margin: 5.25rem auto;
 	flex-direction: column;
 	justify-content: flex-start;
 	align-items: center;
 	gap: var(--size-control-height-lg);
 	
-	// Center line
+	/* Center line */
 	&::before {
 		content: '';
 		position: absolute;
@@ -66,10 +68,6 @@ const Column = styled.div`
 		width: 1px;
 		background-color: #e0e0e0;
 		transform: translateX(-50%);
-		z-index: 0;
-	}
-
-	> * {
-		z-index: 1;
+		z-index: -1;
 	}
 `
