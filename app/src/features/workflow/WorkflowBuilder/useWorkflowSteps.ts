@@ -2,21 +2,15 @@ import { nanoid } from 'nanoid'
 import { usePersistentState } from '@/hooks/usePersistentState'
 import { Step } from './types'
 
-/** Creates a new step with a given id and an empty prompt */
+// Create a new step with a given id and an empty prompt
 export const createStep = (id: string): Step => ({
 	id,
 	prompt: ''
 })
 
-/**
- * useWorkflowSteps
- * Centralized workflow state with persistence.
- * - Single source of truth for steps, dirty state, and save/reset
- * - Keeps all mutation helpers in one place to simplify consumers
- */
+// Workflow state with persistence in localStorage
 export const useWorkflowSteps = () => {
-	// Persist steps in localStorage under a stable key.
-	// Start with a deterministic default step so the UI has something to render.
+	// Persistent list of workflow steps
 	const {
 		value: steps,
 		setValue: setSteps,
@@ -25,25 +19,22 @@ export const useWorkflowSteps = () => {
 		reset
 	} = usePersistentState<Step[]>('workflow_steps', [createStep('1')])
 
-	/** Append a new step with a unique id */
+	// Add a new step with a unique id
 	const addStep = () => {
 		setSteps(prev => [...prev, createStep(nanoid())])
 	}
 
-	/** Replace a step by id with its updated version */
+	// Update a step by id
 	const updateStep = (updated: Step) => {
 		setSteps(prev => prev.map(s => (s.id === updated.id ? updated : s)))
 	}
 
-	/** Remove a step by id */
+	// Delete a step by id
 	const deleteStep = (step: Step) => {
 		setSteps(prev => prev.filter(s => s.id !== step.id))
 	}
 
-	/**
-	 * Reorder two steps by moving `sourceId` to the index of `targetId`
-	 * Assumes ids exist; guard against no-ops to avoid re-renders
-	 */
+	// Move a step from sourceId to the index of targetId
 	const reorderSteps = (sourceId: string, targetId: string) => {
 		setSteps(current => {
 			const from = current.findIndex(s => s.id === sourceId)

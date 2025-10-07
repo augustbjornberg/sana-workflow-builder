@@ -13,35 +13,31 @@ type Props = {
 	onReorder: (sourceId: string, targetId: string) => void
 }
 
-const StyledList = styled.ul`
-	width: 100%;
-`
-
 export const WorkflowStepList: React.FC<Props> = ({
 	items,
 	onChange,
 	onDelete,
 	onReorder
 }) => {
-	const prev = useRef(items)
 
+	// Reorder steps while dragging, triggered when a dragged item moves over another
+	// Skips when there's no valid source/target or when dragging over itself
 	const handleDragOver: DragDropEvents['dragover'] = event => {
 		const { source, target } = event.operation
 		if (!source || !target || source.id === target.id) return
 		onReorder(String(source.id), String(target.id))
 	}
 
-	const handleDragEnd: DragDropEvents['dragend'] = event => {
-		if (event.canceled) return
-		prev.current = items
-	}
+	// const handleDragEnd: DragDropEvents['dragend'] = event => {
+	// 	if (event.canceled) return
+	// }
 
 	return (
 		<DragDropProvider 
-			// dnd-kit RestrictToVerticalAxis has mismatched types with DragDropProvider.modifiers
+			// dnd-kit RestrictToVerticalAxis has mismatched types with DragDropProvider modifiers
 			modifiers={[RestrictToVerticalAxis as any]} // eslint-disable-line @typescript-eslint/no-explicit-any
 			onDragOver={handleDragOver} 
-			onDragEnd={handleDragEnd}
+			// onDragEnd={handleDragEnd}
 		>
 			<StyledList>
 				{items.map((step, i) => (
@@ -57,3 +53,10 @@ export const WorkflowStepList: React.FC<Props> = ({
 		</DragDropProvider>
 	)
 }
+
+const StyledList = styled.ul`
+	display: flex;
+	align-self: stretch;
+	flex-direction: column;
+	gap: var(--size-control-height-lg);
+`

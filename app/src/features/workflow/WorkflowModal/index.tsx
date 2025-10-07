@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import { Modal, Button, icons } from '@/components/primitives/'
+import { Modal, Button, icons, IconButton } from '@/components/primitives/'
 
 import { WorkflowBuilder } from '../WorkflowBuilder'
 import { useWorkflowSteps } from '../WorkflowBuilder/useWorkflowSteps'
@@ -13,14 +13,10 @@ type WorkflowModalProps = {
 	onClose: () => void
 }
 
-export const NameInput = styled.input`
-	font-weight: ${typography.weights.medium};
-	background: transparent;
-`
 
 export const WorkflowModal: React.FC<WorkflowModalProps> = ({ open, onClose }) => {
 
-	const [name, setName] = React.useState('New Workflow')
+	const [name, setName] = React.useState('New workflow')
 
 	const {
 		steps,
@@ -35,11 +31,20 @@ export const WorkflowModal: React.FC<WorkflowModalProps> = ({ open, onClose }) =
 	return (
 		<Modal open={open} onClose={onClose}>
 			<Modal.Header>
-				<NameInput
+				<Title>
+
+				<IconButton 
+					name={icons.bolt}
+					aria-label=""
+					iconSize={14}
+					/>
+
+				<TitleInput
 					value={name}
 					onChange={event => setName(event.target.value)}
 					aria-label="Workflow name"
-				/>
+					/>
+				</Title>
 			</Modal.Header>
 
 			<Modal.Content>
@@ -57,7 +62,7 @@ export const WorkflowModal: React.FC<WorkflowModalProps> = ({ open, onClose }) =
 					onClick={save}
 					disabled={!isDirty}
 					aria-label='Save workflow'
-					icon={icons.arrow}
+					rightIconProps={{ icon: icons.arrow, size: 12 }}
 				>
 					Save
 				</Button>
@@ -65,3 +70,14 @@ export const WorkflowModal: React.FC<WorkflowModalProps> = ({ open, onClose }) =
 		</Modal>
 	)
 }
+
+export const Title = styled.div`
+	display: flex;
+	align-items: center;
+	gap: var(--spacing-3); 
+`
+
+export const TitleInput = styled.input`
+	font-weight: ${typography.weights.medium};
+	background: transparent;
+`

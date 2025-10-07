@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import { IconButton, icons } from '@/components/primitives'
+import { Button, Icon, IconButton, icons } from '@/components/primitives'
 import { WorkflowStepList } from './WorkflowStepList'
 import { Step } from './types'
 
@@ -24,6 +24,14 @@ export const WorkflowBuilder: React.FC<WorkflowBuilderProps> = ({
 }) => {
 	return (
 		<Column>
+			<Button 
+				aria-label='Add a new step'
+				leftIconProps={{icon: icons.click, size: 13}}
+				rightIconProps={{icon: icons.arrowDown, size: 7}}
+				className={styles.outlineMask}
+			>
+				Run manually
+			</Button>
 			<WorkflowStepList
 				items={steps}
 				onChange={onChange}
@@ -35,7 +43,7 @@ export const WorkflowBuilder: React.FC<WorkflowBuilderProps> = ({
 				aria-label='Add a new step'
 				onClick={onAdd}
 				className={styles.outlineMask}
-			/>
+				/>
 		</Column>
 	)
 }
@@ -44,8 +52,11 @@ const Column = styled.div`
 	position: relative;
 	display: flex;
 	flex-direction: column;
+	justify-content: flex-start;
 	align-items: center;
-
+	gap: var(--size-control-height-lg);
+	
+	// Center line
 	&::before {
 		content: '';
 		position: absolute;
@@ -62,8 +73,3 @@ const Column = styled.div`
 		z-index: 1;
 	}
 `
-	
-const StepListWrapper = styled.div`
-	// width: 100%;
-`
-
