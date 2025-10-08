@@ -82,6 +82,7 @@ const FooterWrapper = styled.footer`
 `
 
 const ModalBase: React.FC<ModalProps> = ({ open, onClose, children }) => (
+	// Close modal when Radix signals open=false
 	<Dialog.Root open={open} onOpenChange={(nextOpen: boolean) => !nextOpen && onClose()}>
 		<Dialog.Portal>
 			<Overlay />
@@ -90,6 +91,7 @@ const ModalBase: React.FC<ModalProps> = ({ open, onClose, children }) => (
 	</Dialog.Root>
 )
 
+// Modal component built on Radix Dialog, with Header, Content, and Footer slots
 export const Modal = ModalBase as ModalComponent
 
 Modal.Header = ({ children, showClose = true }: HeaderProps) => (

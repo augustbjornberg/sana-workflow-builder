@@ -30,7 +30,6 @@ export const WorkflowBuilder: React.FC<WorkflowBuilderProps> = ({
 					variant='subtle'
 					leftIconProps={{icon: icons.click, size: 13 }}
 					rightIconProps={{icon: icons.arrowDown, size: 7 }}
-					// className={styles.outlineMask}
 				>
 					Run manually
 				</Button>
@@ -46,8 +45,7 @@ export const WorkflowBuilder: React.FC<WorkflowBuilderProps> = ({
 					iconProps={{ icon: icons.plus}}
 					aria-label='Add a new step to workflow'
 					onClick={onAdd}
-					// className={styles.outlineMask}
-					/>
+				/>
 			</OutlineMask>
 		</Column>
 	)
@@ -63,7 +61,7 @@ const Column = styled.div`
 	align-items: center;
 	gap: var(--size-control-height-lg);
 	
-	/* Center line */
+	/* Vertical divider line that connects workflow steps */
 	&::before {
 		content: '';
 		position: absolute;

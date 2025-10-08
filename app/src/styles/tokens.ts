@@ -1,3 +1,4 @@
+// Global design tokens mapped to CSS variables
 export const tokens = {
 	color: {
 		bg: {

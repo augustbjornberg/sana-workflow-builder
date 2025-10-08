@@ -24,6 +24,7 @@ export const WorkflowStepItem: React.FC<Props> = ({
 	const handleRef = useRef<HTMLButtonElement | null>(null)
 	const inputRef = useRef<HTMLInputElement | null>(null)
 
+	// Initialise dnd-kit useSortable hook. Provides listeners, attributes, transform and transition values used to make this step draggable
 	const { ref, isDragging } = useSortable({
 		id: step.id,
 		index,
@@ -32,17 +33,20 @@ export const WorkflowStepItem: React.FC<Props> = ({
 
 	const [isActive, setIsActive] = useState(false)
 
+	// Activate the step when hovering, and deactivate on mouse leave
 	const handleMouseEnter = () => setIsActive(true)
 	const handleMouseLeave = () => {
-		// only deactivate if input isn't focused
+		// Deactivate only if the input isn't focused, so hover events don't override a focused step
 		if (document.activeElement !== inputRef.current) {
 			setIsActive(false)
 		}
 	}
 
+	// Keep the step active while its textarea has focus; deactivate when focus leaves
 	const handleFocus = () => setIsActive(true)
 	const handleBlur = () => setIsActive(false)
 
+	// Automatically focus the prompt textarea when this is the first step
 	useEffect(() => {
 		if (index === 0) {
 			inputRef.current?.focus()

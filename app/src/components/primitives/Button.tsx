@@ -1,6 +1,6 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
-// import { sizes, radii, spacing, typography, colors } from '@/styles/tokens'
+
 import { tokens } from '@/styles/tokens'
 
 import { Icon, IconProps } from './Icon'

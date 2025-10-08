@@ -14,7 +14,8 @@ export const ScrollArea = React.forwardRef<HTMLDivElement, ScrollAreaProps>(
 
 		React.useImperativeHandle(ref, () => innerRef.current as HTMLDivElement)
 
-        // Auto-scroll to bottom when content changes
+        // If autoScroll is true, scroll to the bottom whenever children change
+		// Useful for when added items should be fully visible
 		React.useEffect(() => {
 			if (autoScroll && innerRef.current) {
 				innerRef.current.scrollTo({

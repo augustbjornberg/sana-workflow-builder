@@ -1,3 +1,4 @@
+// Renders a vertical list of steps aligned on a central line with controls to add, edit, delete and reorder steps. Uses useWorkflowSteps hook to manage the steps
 import React from 'react'
 import styled from 'styled-components'
 
@@ -30,7 +31,7 @@ export const WorkflowModal: React.FC<WorkflowModalProps> = ({ open, onClose }) =
 
 	const contentRef = React.useRef<HTMLDivElement | null>(null)
 
-	// Scroll to 
+	// When step count changes, scroll to the bottom to reveal the newest step
 	React.useEffect(() => {
 		if (contentRef.current) {
 			contentRef.current.scrollTo({

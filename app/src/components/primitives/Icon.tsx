@@ -34,11 +34,13 @@ export interface IconProps extends Omit<React.SVGProps<SVGSVGElement>, 'name'> {
 	size?: number | string
 }
 
+// Renders an SVG icon from name or component; warns if name is unknown
 export const Icon: React.FC<IconProps> = ({
 	icon,
 	size = 16,
 	...props
 }) => {
+	// Resolve either a named icon from the map or a custom SVG component
 	const Svg = typeof icon === 'string' ? icons[icon] : icon as SvgComponent
 
 	if (!Svg) {
