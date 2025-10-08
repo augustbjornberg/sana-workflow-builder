@@ -61,7 +61,7 @@ export const WorkflowStepItem: React.FC<Props> = ({
 			onMouseLeave={handleMouseLeave}
 		>
 			<LeftSlot>
-				<SideButton aria-label={`Delete step ${step.id}`} onClick={onDelete}>
+				<SideButton aria-label={`Delete step ${index + 1}`} onClick={onDelete}>
 					<Icon icon={icons.delete} size={12} />
 				</SideButton>
 			</LeftSlot>
@@ -79,7 +79,7 @@ export const WorkflowStepItem: React.FC<Props> = ({
 						onFocus={handleFocus}
 						onBlur={handleBlur}
 						onChange={e => onChange({ ...step, prompt: e.target.value })}
-						aria-label={`Prompt for step ${step.id}`}
+						aria-label={`Prompt for step ${index + 1}`}
 					/>
 
 					<IconButton
@@ -102,7 +102,7 @@ export const WorkflowStepItem: React.FC<Props> = ({
 			</Actions>
 
 			<RightSlot>
-				<SideButton ref={handleRef} aria-label={`Drag handle for step ${step.id}`}>
+				<SideButton ref={handleRef} aria-label={`Change order of ${index + 1}`}>
 					<Icon icon={icons.drag} size={10} />
 				</SideButton>
 			</RightSlot>
@@ -171,7 +171,7 @@ const Actions = styled.div<{ $active: boolean }>`
 	display: flex;
 	overflow: hidden;
 	pointer-events: ${({ $active }) => ($active ? 'auto' : 'none')};
-	max-height: ${({ $active }) => ($active ? 'var(--size-control-height)' : '0')};
+	max-height: ${({ $active }) => ($active ? 'var(--size-control-height)' : '0')}; /* Disable if the effect feels too intense */
 	opacity: ${({ $active }) => ($active ? 1 : 0)};
 	transition:
 		max-height 500ms ease,

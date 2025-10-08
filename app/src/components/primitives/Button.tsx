@@ -69,8 +69,12 @@ export const baseButton = css`
 
 export const variantStyles = {
 	cta: css`
-		background-color: ${tokens.color.text.default};
+		background-color: ${tokens.color.bg.control.cta.default};
 		color: ${tokens.color.bg.input};
+
+		&:hover:not(:disabled) {
+			background-color: ${tokens.color.bg.control.cta.hover};
+		}
 
 		&:disabled {
 			background-color: transparent;

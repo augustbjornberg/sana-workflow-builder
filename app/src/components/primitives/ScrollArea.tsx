@@ -44,7 +44,7 @@ const Container = styled.div`
 	box-sizing: border-box;
 
 	&::-webkit-scrollbar {
-		width: 8px;
+		width: ${tokens.spacing[2]};
 		background-color: transparent;
 	}
 

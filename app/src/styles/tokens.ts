@@ -8,6 +8,10 @@ export const tokens = {
 			control: {
 				default: 'var(--color-bg-button)', 
 				hover: 'var(--color-bg-button-hover)', 
+				cta: {
+					default: 'var(--color-bg-button-cta)',
+					hover: 'var(--color-bg-button-cta-hover)',
+				},
 			},
 		},
 		text: {

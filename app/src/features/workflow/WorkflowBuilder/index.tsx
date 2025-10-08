@@ -42,7 +42,7 @@ export const WorkflowBuilder: React.FC<WorkflowBuilderProps> = ({
 			/>
 			<OutlineMask>
 				<IconButton
-					iconProps={{ icon: icons.plus}}
+					iconProps={{ icon: icons.plus, size: 10 }}
 					aria-label='Add a new step to workflow'
 					onClick={onAdd}
 				/>
