@@ -5,11 +5,4 @@ services:
     volumes:
       - ./app:/app
       - /app/node_modules
-
-  storybook:
-    build:
-      target: storybook
-    volumes:
-      - ./app:/app
-      - /app/node_modules
-    
+      

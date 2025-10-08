@@ -8,6 +8,3 @@ FROM base AS dev
 RUN chown -R node:node /app
 USER node
 CMD ["npm", "run", "dev"]
-
-FROM base AS storybook
-CMD ["npm", "run", "storybook"]

@@ -6,9 +6,4 @@ services:
       context: ./app
     ports:
       - "3000:3000"
-
-  storybook:
-    build:
-      context: ./app
-    ports:
-      - "6006:6006"
+      
