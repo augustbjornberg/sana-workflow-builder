@@ -28,6 +28,8 @@ const Overlay = styled(Dialog.Overlay)`
 	background-color: rgba(0, 0, 0, 0.6);
 	backdrop-filter: blur(2px);
 	z-index: 999;
+	// pointer-events: none;
+	// display: none;
 `
 
 const Content = styled(Dialog.Content)`

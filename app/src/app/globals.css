@@ -1,9 +1,9 @@
 :root {
 	/* Colors - Backgrounds */
-	--color-bg-page: #1E1E1E;
-	--color-bg-card: #F0F0F0;
-	--color-bg-input: #F6F6F6;
-	--color-bg-button: #E4E4E4;
+	--color-bg-page: #1e1e1e;
+	--color-bg-card: #f0f0f0;
+	--color-bg-input: #f6f6f6;
+	--color-bg-button: #e4e4e4;
 	--color-bg-button-hover: #dbdbdb;
 
 	/* Colors - Text */
@@ -11,8 +11,9 @@
 	--color-text-muted: #898989;
 	--color-text-disabled: #bbbbbb;
 
-	/* Colors - Icons */ 
-	--color-icon: #7B7B7B;
+	/* Colors - Other */
+	--color-icon: #7b7b7b;
+	--color-highlight: #ffffff;
 
 	/* Spacing scale (4px base = 0.25rem) */
 	--spacing: 0.25rem;
@@ -46,31 +47,29 @@
 	--transition-base: 0.2s ease-in-out;
 }
 
-
 :root {
-    text-rendering: optimizelegibility;
-    -webkit-font-smoothing: antialiased;
-    text-size-adjust: 100%;
-    font-weight: 400;
-    line-height: 1.5;
-    font-synthesis: none;
+	text-rendering: optimizelegibility;
+	-webkit-font-smoothing: antialiased;
+	text-size-adjust: 100%;
+	font-weight: 400;
+	line-height: 1.5;
+	font-synthesis: none;
 }
-/* 
-@media (prefers-color-scheme: dark) {
-	:root {
-		--color-bg-page: #0F0F0F;
-		--color-bg-card: #1A1A1A;
-		--color-bg-input: #222;
-		--color-bg-button: #2A2A2A;
-		--color-bg-button-hover: #333;
 
-		--color-text-default: #FFFFFF;
-		--color-text-muted: #B0B0B0;
-		--color-text-disabled: #555555;
+.dark {
+	--color-bg-page: #131314;
+	--color-bg-card: #101010;
+	--color-bg-input: #1c1c1c;
+	--color-bg-button: #3a3a3a;
+	--color-bg-button-hover: #4a4a4a;
 
-		--color-icon: #AAAAAA;
-	}
-} */
+	--color-text-default: #ffffff;
+	--color-text-muted: #a0a0a0;
+	--color-text-disabled: #6b6b6b;
+
+	--color-icon: #a0a0a0;
+	--color-highlight: #000000;
+}
 
 @font-face {
 	font-family:'Sana Sans';
@@ -104,8 +103,8 @@ html {
 }
 
 body {
-	color: var(--text-primary);
-	/* background: var(--page-background); */
+	color: var(--color-text-default);
+	background: var(--color-bg-page);
 	font-family: var(--font-sans);
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
@@ -148,6 +147,7 @@ input {
 	font: inherit;
 	border: 0;
 	outline: none;
+	color: var(--color-text-default)
 }
 
 ul {

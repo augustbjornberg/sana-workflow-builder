@@ -1,24 +1,26 @@
 'use client'
 
-import {useState} from 'react'
+import { useState, useEffect } from 'react'
 import styled from 'styled-components'
 
 import { WorkflowModal } from '@/features/workflow/WorkflowModal'
+import { useToggleDarkMode } from '@/hooks/useToggleDarkMode'
 
-export default function Home() {
+export default function Page() {
 
 	const [open, setOpen] = useState(true)
+	const { enabled: darkMode } = useToggleDarkMode('F10')
 
 	return (
-		<Page>
+		<StyledPage className={darkMode ? 'dark' : ''}>
 			<main>
 				<WorkflowModal open={open} onClose={() => setOpen(false)} />
-			</main> 
-		</Page>
+			</main>
+		</StyledPage>
 	)
 }
 
-export const Page = styled.div`
+export const StyledPage = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-items: center;

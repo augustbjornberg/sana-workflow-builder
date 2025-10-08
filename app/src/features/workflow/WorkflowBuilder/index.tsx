@@ -69,7 +69,7 @@ const Column = styled.div`
 		bottom: 0;
 		left: 50%;
 		width: 1px;
-		background-color: #e0e0e0;
+		background-color: var(--color-bg-button);
 		transform: translateX(-50%);
 		z-index: -1;
 	}

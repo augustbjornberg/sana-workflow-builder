@@ -131,7 +131,7 @@ const Item = styled.li<{ $active: boolean }>`
 	--controls-opacity: ${({ $active }) => ($active ? 1 : 0)};
 	--item-shadow: ${({ $active }) =>
 		$active
-			? `inset 0 0 4px #ffffff, 0 var(--spacing-2) var(--spacing-3) rgba(0,0,0,0.05)`
+			? `inset 0 0 var(--spacing) var(--color-highlight), 0 var(--spacing-2) var(--spacing-3) rgba(0,0,0,0.05)`
 			: 'none'};
 
 	--side-w: calc(var(--spacing) * 12);
@@ -194,6 +194,7 @@ const IndexLabel = styled.span`
 	font-weight: ${tokens.typography.weight.medium};
 	min-width: var(--spacing-6);
 	text-align: center;
+	color: ${tokens.color.text.default};
 `
 
 const Input = styled.input`
