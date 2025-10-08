@@ -74,6 +74,7 @@ export const WorkflowModal: React.FC<WorkflowModalProps> = ({ open, onClose }) =
 
 			<Modal.Footer>
 				<Button
+					// variant='cta'
 					onClick={save}
 					disabled={!isDirty}
 					aria-label='Save workflow'

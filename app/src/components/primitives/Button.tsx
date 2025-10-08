@@ -5,7 +5,7 @@ import { tokens } from '@/styles/tokens'
 
 import { Icon, IconProps } from './Icon'
 
-export type ButtonVariant = 'default' | 'meta' | 'twoTone'
+export type ButtonVariant = 'cta' | 'default' | 'subtle' | 'meta'
 
 type ButtonProps = {
 	'aria-label': string
@@ -68,6 +68,15 @@ export const baseButton = css`
 `
 
 export const variantStyles = {
+	cta: css`
+		background-color: ${tokens.color.text.default};
+		color: ${tokens.color.bg.input};
+
+		&:disabled {
+			background-color: transparent;
+			color: ${tokens.color.text.muted};
+		}
+	`,
 	default: css`
 		background-color: ${tokens.color.bg.control.default};
 
@@ -77,15 +86,15 @@ export const variantStyles = {
 	`,
 	meta: css`
 		background-color: transparent;
-		color: ${tokens.color.text.primary};
-		--icon-color: ${tokens.color.text.secondary};
+		color: ${tokens.color.text.default};
+		--icon-color: ${tokens.color.text.muted};
 
 		&:hover:not(:disabled) {
 			background-color: ${tokens.color.bg.input};
 		}
 	`,
-	twoTone: css`
-		--icon-color: ${tokens.color.text.secondary};
+	subtle: css`
+		--icon-color: ${tokens.color.text.muted};
 
 		&:hover:not(:disabled) {
 			background-color: ${tokens.color.bg.control.hover};

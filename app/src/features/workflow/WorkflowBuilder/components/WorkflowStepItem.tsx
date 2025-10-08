@@ -79,6 +79,7 @@ export const WorkflowStepItem: React.FC<Props> = ({
 					/>
 
 					<IconButton
+						variant='cta'
 						disabled={!step.prompt.length}
 						iconProps={{
 							icon: icons.return,
@@ -139,7 +140,6 @@ const Item = styled.li<{ $active: boolean }>`
 
 	button {
 		opacity: var(--controls-opacity);
-		transition: opacity 0.3s ease;
 	}
 `
 
@@ -179,7 +179,11 @@ const SideButton = styled.button`
 	align-items: center;
 	justify-content: center;
 	padding: var(--spacing-2);
-	color: ${tokens.color.text.secondary};
+	color: ${tokens.color.text.muted};
+
+	&:hover {
+		color: ${tokens.color.text.default};
+	}
 `
 
 const IndexLabel = styled.span`

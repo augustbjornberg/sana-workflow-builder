@@ -10,8 +10,8 @@ export const tokens = {
 			},
 		},
 		text: {
-			primary: 'var(--color-text-primary)', 
-			secondary: 'var(--color-text-secondary)', 
+			default: 'var(--color-text-default)', 
+			muted: 'var(--color-text-muted)', 
 			disabled: 'var(--color-text-disabled)', 
 		},
 		icon: {
@@ -19,8 +19,8 @@ export const tokens = {
 		},
 	},
 	iconTone: {
-		primary: 'var(--color-text-primary)',
-		muted: 'var(--color-text-secondary)', 
+		default: 'var(--color-text-default)',
+		muted: 'var(--color-text-muted)', 
 		disabled: 'var(--color-text-disabled)', 
 	},
 	spacing: {

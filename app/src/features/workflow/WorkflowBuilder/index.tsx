@@ -27,7 +27,7 @@ export const WorkflowBuilder: React.FC<WorkflowBuilderProps> = ({
 			<OutlineMask>
 				<Button 
 					aria-label='Change workflow mode'
-					variant='twoTone'
+					variant='subtle'
 					leftIconProps={{icon: icons.click, size: 13 }}
 					rightIconProps={{icon: icons.arrowDown, size: 7 }}
 					// className={styles.outlineMask}

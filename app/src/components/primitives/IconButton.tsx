@@ -45,8 +45,7 @@ const StyledIconButton = styled.button<{
 	height: ${({ $diameter }) => $diameter};
 	padding: 0;
 	border-radius: 50%;
-	color: ${tokens.color.text.primary};
-	--icon-color: ${tokens.color.text.primary};
+	color: ${tokens.color.text.default};
 
 	${({ $variant }) => variantStyles[$variant]};
 

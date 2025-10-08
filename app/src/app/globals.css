@@ -7,8 +7,8 @@
 	--color-bg-button-hover: #dbdbdb;
 
 	/* Colors - Text */
-	--color-text-primary: #000000;
-	--color-text-secondary: #898989;
+	--color-text-default: #000000;
+	--color-text-muted: #898989;
 	--color-text-disabled: #bbbbbb;
 
 	/* Colors - Icons */ 
@@ -55,10 +55,20 @@
     line-height: 1.5;
     font-synthesis: none;
 }
-
-/* @media (prefers-color-scheme: dark) {
+/* 
+@media (prefers-color-scheme: dark) {
 	:root {
-	
+		--color-bg-page: #0F0F0F;
+		--color-bg-card: #1A1A1A;
+		--color-bg-input: #222;
+		--color-bg-button: #2A2A2A;
+		--color-bg-button-hover: #333;
+
+		--color-text-default: #FFFFFF;
+		--color-text-muted: #B0B0B0;
+		--color-text-disabled: #555555;
+
+		--color-icon: #AAAAAA;
 	}
 } */
 

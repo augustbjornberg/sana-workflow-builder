@@ -1,6 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 
+import { tokens } from '@/styles/tokens'
+
 export type ScrollAreaProps = React.HTMLAttributes<HTMLDivElement> & {
 	children: React.ReactNode
 	autoScroll?: boolean
@@ -50,7 +52,7 @@ const Container = styled.div`
 	}
 
 	&::-webkit-scrollbar-thumb {
-		background-color: var(--color-text-secondary);
+		background-color: ${tokens.color.text.muted};
 		border-radius: var(--radius-round);
 	}
 `
